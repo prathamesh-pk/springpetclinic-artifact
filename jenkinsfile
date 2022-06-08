@@ -7,17 +7,20 @@ pipeline {
                     branch:'master'
             }  
         }
+
         stage('build the code'){
             steps{
                 sh script: 'mvn package'
             }
         }
+
         stage('Junit test'){
             steps{
                 junit '**/surefire-reports/*.xml'
                 archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
             }
         }
+
         stage('diployer)'{
             steps{
                 rtMavenDeployer(
@@ -27,5 +30,6 @@ pipeline {
                 )
             }
         }
+        
     }
 }
