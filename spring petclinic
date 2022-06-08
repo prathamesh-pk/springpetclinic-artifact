@@ -1,0 +1,23 @@
+pipeline {
+    agent { label 'jdk11' }
+     triggers { cron('0 */2 * * *') }
+    stages{
+        stage('source code management'){
+            steps{
+                 git url: 'https://github.com/Akshay0570/spring-framework-petclinic.git', 
+                    branch:'master'
+            }  
+        }
+        stage('build the code'){
+            steps{
+                sh script: 'mvn package'
+            }
+        }
+        stage('Junit test'){
+            steps{
+                junit '**/surefire-reports/*.xml'
+                archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
+            }
+        }
+    }
+}
