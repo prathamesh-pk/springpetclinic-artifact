@@ -1,6 +1,5 @@
 pipeline {
     agent { label 'jdk11' }
-     triggers { cron('0 */2 * * *') }
     stages{
         stage('source code management'){
             steps{
@@ -17,6 +16,15 @@ pipeline {
             steps{
                 junit '**/surefire-reports/*.xml'
                 archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
+            }
+        }
+        stage('diployer)'{
+            steps{
+                rtMavenDeployer(
+                    id: 'practice',
+                    serverId: 'jfrog',
+                    repo: 'maven-local'
+                )
             }
         }
     }
