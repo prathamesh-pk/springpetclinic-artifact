@@ -30,6 +30,16 @@ pipeline {
                     deployArtifacts: 'true',
                 )
             }
+        }
+        stage('publish artifact'){
+            step{
+                rtGoPublish(
+                    buildName: 'publish-spc',
+                    deployerId: 'spc',
+
+                )
+
+            }
         }       
     }
 }
