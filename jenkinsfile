@@ -20,15 +20,16 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
             }
         }
-
-        stage('diployer)'{
+        stage('artifact-deployer'){
             steps{
                 rtMavenDeployer(
-                    id: 'practice',
+                    id: 'spc',
                     serverId: 'jfrog',
-                    repo: 'maven-local'
+                    releaseRepo: 'maven-libs-release-local',
+                    snapshotRepo: 'maven-libs-snapshot-local',
+                    deployArtifacts: 'true',
                 )
             }
-        }
+        }       
     }
 }
