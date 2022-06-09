@@ -17,7 +17,7 @@ pipeline {
         stage('Junit test'){
             steps{
                 junit '**/surefire-reports/*.xml'
-                archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
+                archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
             }
         }
         stage('artifact-deployer'){
@@ -36,7 +36,7 @@ pipeline {
                 rtMavenRun(
                     tool: 'Apache Maven 3.6.3',
                     pom: 'pom.xml',
-                    goals: 'clean package',
+                    goals: 'package',
                     deployerId: "springpet",                    
                 )
             }
