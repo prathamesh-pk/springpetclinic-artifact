@@ -8,11 +8,11 @@ pipeline {
             }  
         }
 
-        stage('build the code'){
-            steps{
-                sh script: 'mvn package'
-            }
-        }
+        //stage('build the code'){
+          //  steps{
+            //    sh script: 'mvn package'
+           // }
+       // }
 
         stage('Junit test'){
             steps{
@@ -23,23 +23,23 @@ pipeline {
         stage('artifact-deployer'){
             steps{
                 rtMavenDeployer(
-                    id: 'jfrog',
-                    serverId: 'spc',
+                    id: 'springpet',
+                    serverId: 'jfrog',
                     releaseRepo: 'maven-libs-release-local',
                     snapshotRepo: 'maven-libs-snapshot-local',
                     deployArtifacts: 'true',
                 )
             }
         }
-       // stage('publish artifact'){
-         //   steps{
-           //     rtGoPublish(
-             ///       buildName: 'publish-spc',
-                //    deployerId: 'spc',
-
-              //  )
-
-          //  }
-       // }       
+         stage('Maven Run'){
+            steps{
+                rtMavenRun(
+                    tool: 'Apache Maven 3.6.3',
+                    pom: 'pom.xml',
+                    goals: 'clean install package',
+                    deployerId: "springpet",                    
+                )
+            }
+        }       
     }
 }
