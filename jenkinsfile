@@ -32,7 +32,7 @@ pipeline {
             }
         }
         stage('publish artifact'){
-            step{
+            steps{
                 rtGoPublish(
                     buildName: 'publish-spc',
                     deployerId: 'spc',
