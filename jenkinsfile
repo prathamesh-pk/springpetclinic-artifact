@@ -37,9 +37,9 @@ pipeline {
              ///       buildName: 'publish-spc',
                 //    deployerId: 'spc',
 
-                )
+              //  )
 
-            }
-        }       
+          //  }
+       // }       
     }
 }
