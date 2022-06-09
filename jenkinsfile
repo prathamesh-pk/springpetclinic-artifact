@@ -23,19 +23,19 @@ pipeline {
         stage('artifact-deployer'){
             steps{
                 rtMavenDeployer(
-                    id: 'spc',
-                    serverId: 'jfrog',
+                    id: 'jfrog',
+                    serverId: 'spc',
                     releaseRepo: 'maven-libs-release-local',
                     snapshotRepo: 'maven-libs-snapshot-local',
                     deployArtifacts: 'true',
                 )
             }
         }
-        stage('publish artifact'){
-            steps{
-                rtGoPublish(
-                    buildName: 'publish-spc',
-                    deployerId: 'spc',
+       // stage('publish artifact'){
+         //   steps{
+           //     rtGoPublish(
+             ///       buildName: 'publish-spc',
+                //    deployerId: 'spc',
 
                 )
 
