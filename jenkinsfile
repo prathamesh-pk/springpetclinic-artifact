@@ -20,17 +20,17 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
             }
         }
-        stage('artifact-deployer'){
-            steps{
-                rtMavenDeployer(
-                    id: 'springpet',
-                    serverId: 'jfrog',
-                    releaseRepo: 'maven-libs-release-local',
-                    snapshotRepo: 'maven-libs-snapshot-local',
-                    deployArtifacts: 'true',
-                )
-            }
-        }
+      //  stage('artifact-deployer'){
+        //    steps{
+          //      rtMavenDeployer(
+           //         id: 'springpet',
+             //       serverId: 'jfrog',
+               //     releaseRepo: 'maven-libs-release-local',
+                 //   snapshotRepo: 'maven-libs-snapshot-local',
+                   // deployArtifacts: 'true',
+                //)
+           // }
+        //}
 //         stage('Maven Run'){
 //            steps{
 //              rtMavenRun(
