@@ -31,15 +31,15 @@ pipeline {
                 )
             }
         }
-//         stage('Maven Run'){
-//            steps{
-//              rtMavenRun(
-//                    tool: 'Apache Maven 3.6.3',
-//                    pom: 'pom.xml',
-//                    goals: 'package',
-//                    deployerId: "springpet",                    
-//                )
-//            }
-//       }       
+         stage('Maven Run'){
+            steps{
+              rtMavenRun(
+                    tool: 'Apache Maven 3.6.3',
+                    pom: 'pom.xml',
+                    goals: 'package',
+                    deployerId: "springpet",                    
+                )
+            }
+        }       
     }
 }
