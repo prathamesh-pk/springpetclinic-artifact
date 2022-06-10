@@ -8,11 +8,11 @@ pipeline {
             }  
         }
 
-        //stage('build the code'){
-          //  steps{
-            //    sh script: 'mvn package'
-           // }
-       // }
+        stage('build the code'){
+            steps{
+                sh script: 'mvn package'
+            }
+        }
 
         stage('Junit test'){
             steps{
